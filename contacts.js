@@ -3,15 +3,15 @@ const crypto = require("crypto");
 const path = require("node:path");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
-console.log({ contactsPath });
+// console.log({ contactsPath });
 
 async function readContacts() {
   const data = await fs.readFile(contactsPath, { encoding: "utf8" });
   return JSON.parse(data);
 }
-readContacts().then((data) => {
-  console.log(data, typeof data, data[0]);
-});
+// readContacts().then((data) => {
+//   console.log(data, typeof data, data[0]);
+// });
 
 function writeContacts(contacts) {
   return fs.writeFile(contactsPath, JSON.stringify(contacts, undefined, 2));
@@ -60,3 +60,11 @@ async function addContact(contact) {
 
   return newContact;
 }
+
+
+module.exports = {
+    listContacts,
+    getContactById,
+    removeContact,
+    addContact
+};
